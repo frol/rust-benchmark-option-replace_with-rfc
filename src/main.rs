@@ -19,6 +19,8 @@ impl<T> OptionExt<T> for Option<T> {
         mem::swap(self, &mut old_value);
         let mut new_value = f(old_value);
         mem::swap(self, &mut new_value);
+        // After two swaps (`old_value` -> `self` -> `new_value`), `new_value`
+        // holds an `uninitialized` value, so we just forget about it. 
         mem::forget(new_value);
     }
 }
