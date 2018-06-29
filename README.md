@@ -1,6 +1,6 @@
 # Benchmark `Option::replace_with` RFC
 
-This benchmark compares three implementations of the following idea:
+This benchmark compares three implementations of the following idea ([more details in Rust RFC #2940](https://github.com/rust-lang/rfcs/pull/2490)):
 
 ```rust
 let mut some_option: Option<i32> = Some(123);
@@ -43,3 +43,5 @@ Found 4 outliers among 100 measurements (4.00%)
 ```
 
 Thus, naive implementation is about 14% slower (31 ns VS 26 ns) than the proposed implementation.
+
+Here is a comparison of the produced assembly code: https://godbolt.org/g/6Cukig (naive implementation is on the left, and optimized implementation is on the right).
